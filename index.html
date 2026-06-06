@@ -1,0 +1,831 @@
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Home | Incipientforth</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jset/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+ <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body{
+      background:#f4f7fb;
+      color:#222;
+      line-height:1.6;
+    }
+
+    /* HEADER */
+    .hero{
+      height:100vh;
+      background:
+        linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+        url('ict1.jpg');
+      background-size:cover;
+      background-position:center;
+      color:white;
+    }
+
+    /* NAVBAR */
+    nav{
+      width:100%;
+      padding:20px 8%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:fixed;
+      top:0;
+      left:0;
+      z-index:1000;
+      background:rgba(0,0,0,0.3);
+      backdrop-filter: blur(10px);
+    }
+
+    .logo{
+      font-size:28px;
+      font-weight:bold;
+      letter-spacing:1px;
+    }
+
+    .logo span{
+      color:#00c3ff;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:30px;
+      list-style:none;
+    }
+
+    .nav-links a{
+      text-decoration:none;
+      color:white;
+      font-size:20px;
+      transition:0.3s;
+      position:relative;
+    }
+
+    .nav-links a::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-6px;
+      width:0%;
+      height:2px;
+      background:#00c3ff;
+      transition:0.3s;
+    }
+
+    .nav-links a:hover::after{
+      width:100%;
+    }
+
+    /* HERO CONTENT */
+    .hero-content{
+      height:100%;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:20px;
+    }
+
+    .hero-content h1{
+      font-size:60px;
+      margin-bottom:20px;
+    }
+
+    .hero-content p{
+      max-width:700px;
+      font-size:18px;
+      line-height:1.6;
+      margin-bottom:30px;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 30px;
+      background:red;
+      color:white;
+      text-decoration:none;
+      border-radius:30px;
+      transition:0.3s;
+      font-size: 20px;
+      font-weight: bolder;
+    }
+    button{
+      width: 400px;
+      height:40px;
+      font-size: 14px;
+
+    }
+    .btn:hover{
+      background:#009ac7;
+      transform:translateY(-2px);
+    }
+
+    /* MOBILE MENU */
+    .menu-toggle{
+      display:none;
+      flex-direction:column;
+      cursor:pointer;
+      gap:5px;
+    }
+
+    .menu-toggle span{
+      width:25px;
+      height:3px;
+      background:white;
+      border-radius:5px;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:768px){
+
+      .menu-toggle{
+        display:flex;
+      }
+
+      .nav-links{
+        position:absolute;
+        top:80px;
+        right:0;
+        width:100%;
+        background:rgba(0,0,0,0.9);
+        flex-direction:column;
+        align-items:center;
+        padding:20px 0;
+        display:none;
+      }
+
+      .nav-links.active{
+        display:flex;
+      }
+
+      .hero-content h1{
+        font-size:40px;
+      }
+
+      .hero-content p{
+        font-size:16px;
+      }
+    }
+
+
+/* SECTION */
+section{padding:70px 40px;text-align:center;}
+.info p{max-width:800px;margin:20px auto;font-size:18px;}
+
+.gallery-container {
+    max-width: 1400px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.gallery-container h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    color: #222;
+}
+
+/* Gallery Grid */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+/* Gallery Item */
+.gallery-item {
+    overflow: hidden;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 200px;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.08);
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+    .gallery {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Small Tablet */
+@media (max-width: 768px) {
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gallery-container h1 {
+        font-size: 2rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery {
+        gap: 15px;
+    }
+}
+/* PROGRAMS */
+.programs{width:100%;display:flex;flex-wrap:wrap;margin-top:20px;}
+.program{
+    flex:1;
+    padding:50px;
+    color:#fff;
+    font-size:22px;
+    font-weight:700;
+    text-align:center;
+}
+.program:nth-child(1){background:#1abc9c;}
+.program:nth-child(2){background:#3498db;}
+.program:nth-child(3){background:#9b59b6;}
+.program:nth-child(4){background:#e67e22;}
+
+/* EVENTS */
+.events-box{
+    background:#fff;
+    padding:40px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+    margin-top:30px;
+}
+.events-box table{
+    width:100%;
+    border-collapse:collapse;
+}
+.events-box th, .events-box td{
+    padding:15px;
+    border-bottom:1px solid #ddd;
+}
+.events-box th{
+    background:#0a3d62;
+    color:#fff;
+}
+
+/* SPECIAL SECTION */
+.special-section{
+    padding:70px 40px;
+    text-align:center;
+}
+.special-section h2{margin-bottom:40px;}
+.special-cards{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+.special-card{
+    flex:1;
+    max-width:30%;
+    text-align:center;
+}
+.special-card img{
+    width:100%;
+    border-radius:15px;
+    opacity:0;
+    transform:translateY(40px);
+    transition:0.8s ease;
+    margin-bottom:15px;
+}
+.special-card h3{
+    font-size:20px;
+    font-weight:700;
+}
+
+/* FOOTER */
+footer{
+    background:#0a3d62;
+    color:#fff;
+    text-align:center;
+    padding:30px;
+    margin-top:50px;
+}
+
+/* ANIMATION SHOW */
+.show{
+    opacity:1 !important;
+    transform:translateY(0) !important;
+}
+
+/* RESPONSIVE */
+@media(max-width:992px){
+    .gallery img{width:45%;}
+    .program{flex:50%;}
+    .special-card{max-width:45%;}
+}
+@media(max-width:768px){
+    nav ul{
+        flex-direction:column;
+        gap:15px;
+        width:100%;
+        max-height:0;
+        overflow:hidden;
+        text-align:center;
+    }
+    nav ul.active{
+        max-height:500px;
+    }
+    .hamburger{
+        display:flex;
+    }
+    .gallery img{width:100%;}
+    .program{flex:100%;}
+    .special-card{max-width:100%;}
+    .hero-text{font-size:32px;}
+}
+/*why choose incipientforth */
+.section{
+        max-width:1200px;
+        margin:60px auto;
+        padding:20px;
+    }
+
+    .section-header{
+        text-align:center;
+        margin-bottom:50px;
+    }
+
+    .section-header h3{
+        font-size:clamp(2rem, 5vw, 3.5rem);
+        color:#0d47a1;
+        font-weight:200;
+    }
+
+    .features{
+        display:grid;
+        grid-template-columns:repeat(3, 1fr);
+        gap:30px;
+    }
+
+    .card{
+        background:#fff;
+        padding:35px 30px;
+        border-radius:18px;
+        box-shadow:0 10px 30px rgba(0,0,0,0.08);
+        transition:all 0.3s ease;
+        text-align:center;
+    }
+
+    .card:hover{
+        transform:translateY(-8px);
+        box-shadow:0 15px 40px rgba(0,0,0,0.12);
+    }
+
+    .icon{
+        width:80px;
+        height:80px;
+        margin:0 auto 20px;
+        border-radius:50%;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        font-size:2rem;
+        color:white;
+    }
+
+    .activity{
+        background:linear-gradient(135deg,#ff9800,#ff5722);
+    }
+
+    .environment{
+        background:linear-gradient(135deg,#00c853,#009688);
+    }
+
+    .worldclass{
+        background:linear-gradient(135deg,#3f51b5,#673ab7);
+    }
+
+    .card h2{
+        font-size:1.4rem;
+        margin-bottom:15px;
+        color:#222;
+    }
+
+    .card p{
+        color:#666;
+        font-size:0.98rem;
+    }
+
+    /* Tablet */
+    @media (max-width: 900px){
+        .features{
+            grid-template-columns:repeat(2,1fr);
+        }
+    }
+
+    /* Mobile */
+    @media (max-width: 600px){
+        .features{
+            grid-template-columns:1fr;
+        }
+
+        .section{
+            margin:40px auto;
+        }
+    }
+
+    /*parent speech */
+    header{
+        background:#0d6efd;
+        color:white;
+        text-align:center;
+        padding:30px 20px;
+    }
+
+    header h1{
+        font-size:2.5rem;
+        letter-spacing:2px;
+    }
+
+    .container{
+        max-width:1200px;
+        margin:40px auto;
+        padding:0 20px;
+    }
+
+    .parent-section{
+        display:flex;
+        gap:30px;
+        align-items:flex-start;
+    }
+
+    .speech-column,
+    .video-column{
+        flex:1;
+        background:#fff;
+        padding:25px;
+        border-radius:12px;
+        box-shadow:0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .speech-column h2,
+    .video-column h2{
+        margin-bottom:15px;
+        color:#0d6efd;
+    }
+
+    .speech-column p{
+        margin-bottom:15px;
+        text-align:justify;
+    }
+
+    .video-wrapper{
+        position:relative;
+        width:100%;
+        padding-bottom:56.25%;
+        height:0;
+        overflow:hidden;
+        border-radius:10px;
+    }
+
+    .video-wrapper iframe{
+        position:absolute;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        border:none;
+    }
+
+    @media (max-width: 768px){
+        .parent-section{
+            flex-direction:column;
+        }
+
+        header h1{
+            font-size:2rem;
+        }
+    }
+</style>
+</head>
+<body>
+
+<header class="hero">
+
+    <nav>
+      <div class="logo">Ifs</span></div>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="giving.html">Admission</a></li>
+        <li><a href="#">Vacancy</a></li>
+      </ul>
+
+      <div class="menu-toggle" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+
+    <div class="hero-content">
+      <h1><b>INCIPIENTFORTH SCHOOL</b></h1>
+      
+
+      <a href="#" class="btn">PORTAL</a>
+    </div>
+
+  </header>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+  </script>
+
+
+
+
+<section class="info">
+    <h2>Welcome to Incipientforth School</h2>
+    <p>
+        Incipienforth School is dedicated to academic excellence, creativity, and character development. 
+        We provide a nurturing environment that encourages leadership, innovation, and lifelong learning.
+    </p>
+</section>
+
+<section class="gallery-container">
+        <h1>ALBUM</h1>
+
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="ict1.jpg" alt="Photo 1">
+            </div>
+            <div class="gallery-item">
+                <img src="ict2.jpg" alt="Photo 2">
+            </div>
+            <div class="gallery-item">
+                <img src="ict3.jpg" alt="Photo 3">
+            </div>
+            <div class="gallery-item">
+                <img src="ict4.jpg" alt="Photo 4">
+            </div>
+            <div class="gallery-item">
+                <img src="ict5.jpg" alt="Photo 5">
+            </div>
+            <div class="gallery-item">
+                <img src="ict6.jpg" alt="Photo 6">
+            </div>
+            <div class="gallery-item">
+                <img src="ict7.jpg" alt="Photo 7">
+            </div>
+            <div class="gallery-item">
+                <img src="ict8.jpg" alt="Photo 8">
+            </div>
+        </div>
+    </section>
+
+
+<section>
+    <h1>OUR LEARNING PROGRAMS:</h1>
+</section>
+
+<div class="programs">
+    <div class="program">French & Phonics</div>
+    <div class="program">Mathematics</div>
+    <div class="program">Science & Discovery</div>
+    <div class="program">Coding</div>
+</div>
+
+<section>
+    <h2>SCHOOL ACTIVITIES</h2>
+    <div class="events-box">
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>Event</th>
+                
+            </tr>
+            <tr>
+                <td>Wed.27th May,2026</td>
+                <td>Resumption Date</td>
+                
+            </tr>
+            <tr>
+                <td>Wed.27th-Thurs.28th May,2026</td>
+                <td>Eld El-Kabir</td>
+                
+            </tr>
+            <tr>
+                <td>Thurs.4th-Wed 10th June,2026</td>
+                <td>Mid Term Test</td>
+             
+            </tr>
+
+            <tr>
+                <td>Thurs.11th June,2026</td>
+                <td>Open Day</td>
+             
+            </tr>
+            <tr>
+                <td>Fri.12th June,2026</td>
+                <td>Democracy Day</td>
+             
+            </tr>
+
+            <tr>
+                <td>Mon.15th - Fri. 19th June,2026</td>
+                <td>Mid Term Break</td>
+             
+            </tr>
+
+            <tr>
+                <td>Mon.29th June - Fri. 3rd July, 2026</td>
+                <td>Revision Week</td>
+             
+            </tr>
+            <tr>
+                <td>Mon.6th - Fri. 10th July,2026</td>
+                <td>Examination</td>
+             
+            </tr>
+            <tr>
+                <td>Tues.14th July, 2026</td>
+                <td>Vacation</td>
+             
+            </tr>
+            <tr>
+                <td>Fri.17th July,2026</td>
+                <td>Valedictory</td>
+             
+            </tr>
+        </table>
+    </div>
+</section>
+
+<!--<section class="special-section">
+    <h2>What Makes Us Special</h2>
+    <div class="special-cards">
+        <div class="special-card">
+            <img class="animate" src="ict9.jpg">
+            <h3>Enabling Environment</h3>
+        </div>
+        <div class="special-card">
+            <img class="animate" src="ict9.jpg">
+            <h3>High Quality Teachers</h3>
+        </div>
+        <div class="special-card">
+            <img class="animate" src="ict5.jpg">
+            <h3>Co-Curriculum</h3>
+        </div>
+    </div>
+</section>-->
+<section class="section">
+    <div class="section-header">
+        <h3>Why Incipientforth School?</h3>
+    </div>
+
+    <div class="features">
+
+        <div class="card">
+           
+            <h2>Extra-Curricular Activities</h2>
+            <p>
+                We offer a wide range of sports, arts, music, drama, and club
+                activities that help students discover their talents, develop
+                leadership skills, and build confidence beyond the classroom.
+            </p>
+        </div>
+
+        <div class="card">
+            
+            <h2>Conducive Learning Environment</h2>
+            <p>
+                Our safe, welcoming, and student-focused environment promotes
+                creativity, collaboration, and academic excellence, ensuring
+                every learner can thrive and achieve their full potential.
+            </p>
+        </div>
+
+        <div class="card">
+            
+            <h2>World Class School</h2>
+            <p>
+                With modern facilities, innovative teaching methods, and highly
+                qualified educators, we provide a globally competitive education
+                that prepares students for future success.
+            </p>
+        </div>
+
+        <!--second part-->
+        <div class="card">
+           
+            <h2>Raising Stars</h2>
+            <p>
+                We are dedicated to raising champions and future leaders. we believe
+                in the future of our children and we invest by getting quality teachers 
+                and destiny builders. Every child is unique and we ensure to bring out that
+                best in them.
+            </p>
+        </div>
+
+        <div class="card">
+            
+            <h2>High Quality Teachers</h2>
+            <p>
+                We cannot achieve success without employing 21st century quality teachers. We are so interested in investing on our teachers, offering teacher's training and mentorship.
+            </p>
+        </div>
+
+        <div class="card">
+            
+            <h2>Highly Competitive</h2>
+            <p>
+                Our school is highly competitive and one of the best in surulere, Lagos. We have raised champions that thrive wherever they go to. We instill discipine.
+            </p>
+        </div>
+    </div>
+</section>
+
+<header>
+    <h1>PARENT SPEECH</h1>
+</header>
+
+<div class="container">
+    <div class="parent-section">
+
+        <!-- Parent Speech Column -->
+        <div class="speech-column">
+            <h2>What Parents Say About Our School</h2>
+
+            <p>
+                We are extremely grateful to be a part of incipientforth School.
+                The teachers are dedicated, supportive, and genuinely care about each child's
+                growth and development. Our child has gained confidence, academic excellence,
+                and valuable life skills through the school's nurturing environment.
+            </p>
+
+            <p>
+                The school's focus on holistic education, discipline, creativity, and
+                extracurricular activities has helped our child become more responsible
+                and enthusiastic about learning. Communication between parents and teachers
+                is always transparent and encouraging.
+            </p>
+
+            <p>
+                We highly recommend this school to families looking for a safe, inspiring,
+                and academically strong environment where children can thrive and achieve
+                their full potential.
+            </p>
+        </div>
+
+        <!-- YouTube Video Column -->
+        <div class="video-column">
+            <h2>Parent Reels</h2>
+
+            <div class="video-wrapper">
+                <!-- Replace VIDEO_ID with your YouTube video ID -->
+               <iframe width="560" height="315" src="https://www.youtube.com/embed/uobLkWraHGw?si=Sn21SO7zQQdLe71C" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<footer>
+    © 2026 Incipienforth School | All Rights Reserved | Developer: Wiztech Hub
+</footer>
+
+
+
+</body>
+</html>

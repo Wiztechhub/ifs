@@ -1,0 +1,345 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Home | Incipientforth</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jset/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+ <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body{
+      background:#f4f7fb;
+      color:#222;
+      line-height:1.6;
+    }
+
+    /* HEADER */
+    .hero{
+      height:100vh;
+      background:
+        linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+        url('ict1.jpg');
+      background-size:cover;
+      background-position:center;
+      color:white;
+    }
+
+    /* NAVBAR */
+    nav{
+      width:100%;
+      padding:20px 8%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:fixed;
+      top:0;
+      left:0;
+      z-index:1000;
+      background:rgba(0,0,0,0.3);
+      backdrop-filter: blur(10px);
+    }
+
+    .logo{
+      font-size:28px;
+      font-weight:bold;
+      letter-spacing:1px;
+    }
+
+    .logo span{
+      color:#00c3ff;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:30px;
+      list-style:none;
+    }
+
+    .nav-links a{
+      text-decoration:none;
+      color:white;
+      font-size:20px;
+      transition:0.3s;
+      position:relative;
+    }
+
+    .nav-links a::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-6px;
+      width:0%;
+      height:2px;
+      background:#00c3ff;
+      transition:0.3s;
+    }
+
+    .nav-links a:hover::after{
+      width:100%;
+    }
+
+    /* HERO CONTENT */
+    .hero-content{
+      height:100%;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:20px;
+    }
+
+    .hero-content h1{
+      font-size:60px;
+      margin-bottom:20px;
+    }
+
+    .hero-content p{
+      max-width:700px;
+      font-size:18px;
+      line-height:1.6;
+      margin-bottom:30px;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 30px;
+      background:red;
+      color:white;
+      text-decoration:none;
+      border-radius:30px;
+      transition:0.3s;
+      font-size: 20px;
+      font-weight: bolder;
+    }
+    button{
+      width: 400px;
+      height:40px;
+      font-size: 14px;
+
+    }
+    .btn:hover{
+      background:#009ac7;
+      transform:translateY(-2px);
+    }
+
+    /* MOBILE MENU */
+    .menu-toggle{
+      display:none;
+      flex-direction:column;
+      cursor:pointer;
+      gap:5px;
+    }
+
+    .menu-toggle span{
+      width:25px;
+      height:3px;
+      background:white;
+      border-radius:5px;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:768px){
+
+      .menu-toggle{
+        display:flex;
+      }
+
+      .nav-links{
+        position:absolute;
+        top:80px;
+        right:0;
+        width:100%;
+        background:rgba(0,0,0,0.9);
+        flex-direction:column;
+        align-items:center;
+        padding:20px 0;
+        display:none;
+      }
+
+      .nav-links.active{
+        display:flex;
+      }
+
+      .hero-content h1{
+        font-size:40px;
+      }
+
+      .hero-content p{
+        font-size:16px;
+      }
+    }
+/* --------------------------
+CONTACT SECTION
+---------------------------*/
+
+.contact-section {
+    padding: 50px;
+}
+
+.contact-container {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.contact-info {
+    flex: 1;
+    min-width: 300px;
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.contact-info h2 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.info-box p {
+    margin: 8px 0;
+    color: #555;
+}
+
+.contact-form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.contact-form textarea {
+    height: 120px;
+    resize: none;
+}
+
+.contact-form button {
+    padding: 12px;
+    background: #111;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.contact-form button:hover {
+    background: #333;
+}
+
+.map-box {
+    flex: 1;
+    min-width: 300px;
+    height: 450px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+/* FOOTER */
+footer{
+    background:#0a3d62;
+    color:#fff;
+    text-align:center;
+    padding:30px;
+    margin-top:50px;
+}
+
+</style>
+</head>
+<body>
+
+<header class="hero">
+
+    <nav>
+      <div class="logo">Ifs</span></div>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="giving.html">Admission</a></li>
+        <li><a href="#">Vacancy</a></li>
+      </ul>
+
+      <div class="menu-toggle" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+
+    <div class="hero-content">
+      <h1><b>INCIPIENTFORTH SCHOOL</b></h1>
+      
+
+      <a href="#" class="btn">PORTAL</a>
+    </div>
+
+  </header>
+
+<section class="contact-section">
+        <div class="contact-container">
+
+            <div class="contact-info">
+                <h2>Contact Us</h2>
+                <p>If you have any questions, feel free to reach out. We would love to hear from you!</p>
+
+                <div class="info-box">
+                    <p><strong>Address:</strong>8, Simisola stret, surulere, Lagos.</p>
+                    <p><strong>Email:</strong> incipientforthsch22@gmail.com</p>
+                    <p><strong>Phone:</strong> +234 80715626641</p>
+                </div>
+
+                <form class="contact-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+
+            <div class="map-box">
+                <!-- Replace with your location if needed -->
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31721.86870379253!2d3.3941798!3d6.4531171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b0e5bb2ed51%3A0xe7a7f4ba5f5f75a1!2sLagos!5e0!3m2!1sen!2sng!4v1706800000000"
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+                </iframe>
+            </div>
+
+        </div>
+    </section>
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+  </script>
+<footer>
+    © 2026 Incipienforth School | All Rights Reserved | Developer: Wiztech Hub
+</footer>
+
+
+</body>
+</html>

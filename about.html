@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us - School Website</title>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Home | Incipientforth</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jset/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+ <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body{
+      background:#f4f7fb;
+      color:#222;
+      line-height:1.6;
+    }
+
+    /* HEADER */
+    .hero{
+      height:100vh;
+      background:
+        linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+        url('ict1.jpg');
+      background-size:cover;
+      background-position:center;
+      color:white;
+    }
+
+    /* NAVBAR */
+    nav{
+      width:100%;
+      padding:20px 8%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:fixed;
+      top:0;
+      left:0;
+      z-index:1000;
+      background:rgba(0,0,0,0.3);
+      backdrop-filter: blur(10px);
+    }
+
+    .logo{
+      font-size:28px;
+      font-weight:bold;
+      letter-spacing:1px;
+    }
+
+    .logo span{
+      color:#00c3ff;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:30px;
+      list-style:none;
+    }
+
+    .nav-links a{
+      text-decoration:none;
+      color:white;
+      font-size:20px;
+      transition:0.3s;
+      position:relative;
+    }
+
+    .nav-links a::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-6px;
+      width:0%;
+      height:2px;
+      background:#00c3ff;
+      transition:0.3s;
+    }
+
+    .nav-links a:hover::after{
+      width:100%;
+    }
+
+    /* HERO CONTENT */
+    .hero-content{
+      height:100%;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:20px;
+    }
+
+    .hero-content h1{
+      font-size:60px;
+      margin-bottom:20px;
+    }
+
+    .hero-content p{
+      max-width:700px;
+      font-size:18px;
+      line-height:1.6;
+      margin-bottom:30px;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 30px;
+      background:red;
+      color:white;
+      text-decoration:none;
+      border-radius:30px;
+      transition:0.3s;
+      font-size: 20px;
+      font-weight: bolder;
+    }
+    button{
+      width: 400px;
+      height:40px;
+      font-size: 14px;
+
+    }
+    .btn:hover{
+      background:#009ac7;
+      transform:translateY(-2px);
+    }
+
+    /* MOBILE MENU */
+    .menu-toggle{
+      display:none;
+      flex-direction:column;
+      cursor:pointer;
+      gap:5px;
+    }
+
+    .menu-toggle span{
+      width:25px;
+      height:3px;
+      background:white;
+      border-radius:5px;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:768px){
+
+      .menu-toggle{
+        display:flex;
+      }
+
+      .nav-links{
+        position:absolute;
+        top:80px;
+        right:0;
+        width:100%;
+        background:rgba(0,0,0,0.9);
+        flex-direction:column;
+        align-items:center;
+        padding:20px 0;
+        display:none;
+      }
+
+      .nav-links.active{
+        display:flex;
+      }
+
+      .hero-content h1{
+        font-size:40px;
+      }
+
+      .hero-content p{
+        font-size:16px;
+      }
+    }
+    .container{
+        width:90%;
+        max-width:1200px;
+        margin:auto;
+    }
+
+    section{
+        padding:70px 0;
+    }
+
+    h2{
+        text-align:center;
+        margin-bottom:30px;
+        color:#003366;
+        font-size:2rem;
+    }
+
+    /* ABOUT SECTION */
+    .about-grid{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:40px;
+        align-items:center;
+    }
+
+    .about-text{
+        animation:slideLeft 1s ease;
+    }
+
+    .about-image{
+        animation:slideRight 1s ease;
+    }
+
+    .about-image img{
+        width:100%;
+        border-radius:15px;
+        box-shadow:0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    /* MISSION & VISION */
+    .mission-vision{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:30px;
+    }
+
+    .card{
+        background:#fff;
+        padding:30px;
+        border-radius:15px;
+        box-shadow:0 5px 15px rgba(0,0,0,0.1);
+        transition:0.4s;
+        animation:fadeUp 1s ease;
+    }
+
+    .card:hover{
+        transform:translateY(-10px);
+    }
+
+    .card h3{
+        color:#0056b3;
+        margin-bottom:15px;
+    }
+
+    /* CORE VALUES */
+    .values-grid{
+        display:grid;
+        grid-template-columns:1fr 1fr 1fr;
+        gap:20px;
+    }
+
+    .value-box{
+        background:#fff;
+        padding:25px;
+        border-radius:15px;
+        text-align:center;
+        box-shadow:0 5px 15px rgba(0,0,0,0.1);
+        transition:0.4s;
+        animation:fadeUp 1s ease;
+    }
+
+    .value-box:hover{
+        background:#003366;
+        color:white;
+        transform:scale(1.05);
+    }
+
+    .value-box ul{
+        list-style:none;
+        margin-top:10px;
+    }
+
+    .value-box li{
+        padding:8px 0;
+    }
+
+    /* ANIMATIONS */
+    @keyframes slideLeft{
+        from{
+            opacity:0;
+            transform:translateX(-50px);
+        }
+        to{
+            opacity:1;
+            transform:translateX(0);
+        }
+    }
+
+    @keyframes slideRight{
+        from{
+            opacity:0;
+            transform:translateX(50px);
+        }
+        to{
+            opacity:1;
+            transform:translateX(0);
+        }
+    }
+
+    @keyframes fadeUp{
+        from{
+            opacity:0;
+            transform:translateY(40px);
+        }
+        to{
+            opacity:1;
+            transform:translateY(0);
+        }
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:768px){
+
+        .about-grid,
+        .mission-vision,
+        .values-grid{
+            grid-template-columns:1fr;
+        }
+
+        h2{
+            font-size:1.8rem;
+        }
+    }
+
+    /* RESPONSIVE */
+@media(max-width:992px){
+    .gallery img{width:45%;}
+    .program{flex:50%;}
+    .special-card{max-width:45%;}
+}
+@media(max-width:768px){
+    nav ul{
+        flex-direction:column;
+        gap:15px;
+        width:100%;
+        max-height:0;
+        overflow:hidden;
+        text-align:center;
+    }
+    nav ul.active{
+        max-height:500px;
+    }
+    .hamburger{
+        display:flex;
+    }
+    .gallery img{width:100%;}
+    .program{flex:100%;}
+    .special-card{max-width:100%;}
+    .hero-text{font-size:32px;}
+}
+/* ANIMATION SHOW */
+.show{
+    opacity:1 !important;
+    transform:translateY(0) !important;
+}
+/* FOOTER */
+footer{
+    background:#0a3d62;
+    color:#fff;
+    text-align:center;
+    padding:30px;
+    margin-top:50px;
+}
+
+
+</style>
+</head>
+<body>
+<header class="hero">
+
+    <nav>
+      <div class="logo">Ifs</span></div>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="#">Admission</a></li>
+        <li><a href="#">Vacancy</a></li>
+      </ul>
+
+      <div class="menu-toggle" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+
+    <div class="hero-content">
+      <h1><b>INCIPIENTFORTH SCHOOL</b></h1>
+      
+
+      <a href="#" class="btn">PORTAL</a>
+    </div>
+
+  </header>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+  </script>
+
+<!-- ABOUT US -->
+<section>
+    <div class="container">
+        <h2>ABOUT OUR SCHOOL</h2>
+
+        <div class="about-grid">
+
+            <div class="about-text">
+                <p>
+                    Our school is dedicated to providing quality education in a
+                    safe, supportive, and inspiring environment. We nurture
+                    academic excellence, character development, and leadership
+                    skills that prepare students to become responsible citizens
+                    and future leaders.
+                </p>
+            </div>
+
+            <div class="about-image">
+                <img src="ict1.jpg"
+                     alt="School Building">
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- MISSION & VISION -->
+<section>
+    <div class="container">
+        <h2>MISSION & VISION</h2>
+
+        <div class="mission-vision">
+
+            <div class="card">
+                <h3>Our Mission</h3>
+                <p>
+                    To provide a holistic education that empowers students
+                    academically, morally, and socially while fostering
+                    creativity, innovation, and lifelong learning.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Our Vision</h3>
+                <p>
+                    To be a leading educational institution recognized for
+                    excellence in learning, character building, and the
+                    development of future global leaders.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- CORE VALUES -->
+<section>
+    <div class="container">
+        <h2>OUR CORE VALUES</h2>
+
+        <div class="values-grid">
+
+            <div class="value-box">
+                <h3>Core Value</h3>
+                <p>
+                    We uphold principles that guide our students toward
+                    excellence and responsible citizenship.
+                </p>
+            </div>
+
+            <div class="value-box">
+                <h3>Values</h3>
+                <ul>
+                    <li>Excellence</li>
+                    <li>Discipline</li>
+                    <li>Integrity</li>
+                </ul>
+            </div>
+
+            <div class="value-box">
+                <h3>More Values</h3>
+                <ul>
+                    <li>Confidence</li>
+                    <li>Respect</li>
+                    <li>Creativity</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</section>
+<footer>
+    © 2026 Incipienforth School | All Rights Reserved | Developer: Wiztech Hub
+</footer>
+
+
+</body>
+</html>
